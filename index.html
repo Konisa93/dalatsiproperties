@@ -10,8 +10,8 @@
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      color: #000;           /* text color black */
-      background-color: #fff; /* background white */
+      color: #333;
+      background-color: #000;
     }
     header {
       background-color: #000;
@@ -28,25 +28,23 @@
       margin-top: 20px;
     }
     nav {
-      background-color: #000;
+      background-color: #111;
       text-align: center;
-      margin-top: 20px;
+      padding: 10px;
     }
     nav a {
-      background-color: #000;
       color: white;
-      padding: 12px 24px;
-      margin: 0 8px;
+      padding: 12px 18px;
+      margin: 5px;
       display: inline-block;
       text-decoration: none;
-      border: 1px solid #fff;
+      border: 1px solid white;
       border-radius: 20px;
       font-weight: 300;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background 0.3s;
     }
     nav a:hover {
-      background-color: #000;
-      color: #000;
+      background-color: #222;
     }
     section {
       padding: 20px;
@@ -57,7 +55,7 @@
       margin-bottom: 20px;
       border-radius: 8px;
       background-color: #111;
-      color: #fff;
+      color: white;
     }
     footer {
       background-color: #000;
@@ -66,50 +64,29 @@
       text-align: center;
       font-size: 0.9em;
     }
-    .language-switch {
+    #langToggleBtn {
       position: absolute;
       top: 20px;
       right: 20px;
-    }
-    .language-switch button {
-      margin: 0 5px;
-      padding: 5px 10px;
-      cursor: pointer;
-      background: #222;
-      border: none;
+      padding: 8px 16px;
+      background-color: #111;
       color: white;
-      border-radius: 4px;
-      font-weight: 300;
+      border: 1px solid white;
+      border-radius: 20px;
+      cursor: pointer;
     }
-    .language-switch button:hover {
-      background: #444;
+    #langToggleBtn:hover {
+      background-color: #333;
     }
   </style>
-  <script>
-    function switchLanguage(lang) {
-      document.body.className = lang;
-      const allText = document.querySelectorAll('.el, .en');
-      allText.forEach(el => {
-        if (el.classList.contains(lang)) {
-          el.style.display = '';
-        } else {
-          el.style.display = 'none';
-        }
-      });
-    }
-  </script>
 </head>
-<body class="el">
-  <div class="language-switch">
-    <button onclick="switchLanguage('el')">Ελληνικά</button>
-    <button onclick="switchLanguage('en')">English</button>
-  </div>
-
+<body>
   <header>
-    <h1>Dalatsi Properties</h1>
+    <button id="langToggleBtn" onclick="toggleLanguage()">English</button>
+    <h1 style="font-family: 'Poppins', sans-serif; text-transform: uppercase;">DALATSI PROPERTIES</h1>
     <p class="el">Επαγγελματικοί χώροι στο Χαλάνδρι</p>
     <p class="en" style="display:none;">Commercial spaces in Chalandri</p>
-    <img src="https://www.derbesfalgoust.com/images/bg/commercial-real-estate-listings.jpg" alt="Shopping stores">
+    <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=1500&q=80" alt="Καταστήματα">
   </header>
 
   <nav>
@@ -168,5 +145,24 @@
   <footer>
     <p>&copy; 2025 Dalatsi IKE | dalatsiproperties.com</p>
   </footer>
+
+  <script>
+    let currentLang = 'el';
+    function toggleLanguage() {
+      const elElements = document.querySelectorAll('.el');
+      const enElements = document.querySelectorAll('.en');
+      if (currentLang === 'el') {
+        currentLang = 'en';
+        elElements.forEach(el => el.style.display = 'none');
+        enElements.forEach(el => el.style.display = '');
+        document.getElementById('langToggleBtn').textContent = 'Ελληνικά';
+      } else {
+        currentLang = 'el';
+        elElements.forEach(el => el.style.display = '');
+        enElements.forEach(el => el.style.display = 'none');
+        document.getElementById('langToggleBtn').textContent = 'English';
+      }
+    }
+  </script>
 </body>
 </html>
