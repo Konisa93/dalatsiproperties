@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dalatsi Properties | Χαλάνδρι</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background-color: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    header img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+      margin-top: 20px;
+    }
+    nav {
+      background-color: #111;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    section {
+      padding: 20px;
+    }
+    .property {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    footer {
+      background-color: #000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+    }
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .language-switch button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      background: #222;
+      border: none;
+      color: white;
+      border-radius: 4px;
+    }
+    .language-switch button:hover {
+      background: #444;
+    }
+  </style>
+  <script>
+    function switchLanguage(lang) {
+      document.body.className = lang;
+      const allText = document.querySelectorAll('.el, .en');
+      allText.forEach(el => {
+        if (el.classList.contains(lang)) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</head>
+<body class="el">
+  <div class="language-switch">
+    <button onclick="switchLanguage('el')">Ελληνικά</button>
+    <button onclick="switchLanguage('en')">English</button>
+  </div>
+
+  <header>
+    <h1>Dalatsi Properties</h1>
+    <p class="el">Επαγγελματικοί χώροι στο Χαλάνδρι</p>
+    <p class="en" style="display:none;">Commercial spaces in Chalandri</p>
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1500&q=80" alt="Επαγγελματικά ακίνητα">
+  </header>
+
+  <nav>
+    <a href="#about" class="el">Η Εταιρεία</a>
+    <a href="#properties" class="el">Ακίνητα</a>
+    <a href="#contact" class="el">Επικοινωνία</a>
+    <a href="#about" class="en" style="display:none;">About Us</a>
+    <a href="#properties" class="en" style="display:none;">Properties</a>
+    <a href="#contact" class="en" style="display:none;">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2 class="el">Η Εταιρεία</h2>
+    <h2 class="en" style="display:none;">About Us</h2>
+    <p class="el">Η Dalatsi IKE δραστηριοποιείται στον χώρο των ακινήτων προσφέροντας επαγγελματικούς χώρους υψηλής ποιότητας κυρίως στο Χαλάνδρι.</p>
+    <p class="en" style="display:none;">Dalatsi IKE operates in the real estate sector, offering high-quality commercial spaces mainly in Chalandri.</p>
+  </section>
+
+  <section id="properties">
+    <h2 class="el">Τα Ακίνητά μας</h2>
+    <h2 class="en" style="display:none;">Our Properties</h2>
+
+    <div class="property">
+      <h3 class="el">Κατάστημα στο Χαλάνδρι 1</h3>
+      <h3 class="en" style="display:none;">Shop in Chalandri 1</h3>
+      <p class="el">Ισόγειο ακίνητο 95 τ.μ. στην καρδιά του Χαλανδρίου, κοντά σε αγορά και μέσα μαζικής μεταφοράς.</p>
+      <p class="en" style="display:none;">Ground floor property of 95 sq.m. in the heart of Chalandri, close to market and public transport.</p>
+    </div>
+
+    <div class="property">
+      <h3 class="el">Κατάστημα στο Χαλάνδρι 2</h3>
+      <h3 class="en" style="display:none;">Shop in Chalandri 2</h3>
+      <p class="el">Χώρος 80 τ.μ. ιδανικός για επαγγελματικό γραφείο ή showroom, σε κεντρικό σημείο.</p>
+      <p class="en" style="display:none;">80 sq.m. space ideal for office or showroom, in a central location.</p>
+    </div>
+
+    <div class="property">
+      <h3 class="el">Αποθηκευτικός χώρος στο Χαλάνδρι</h3>
+      <h3 class="en" style="display:none;">Storage space in Chalandri</h3>
+      <p class="el">Υπόγειος χώρος 120 τ.μ., κατάλληλος για αποθήκη ή logistics hub.</p>
+      <p class="en" style="display:none;">Basement space of 120 sq.m., suitable for storage or a logistics hub.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="el">Επικοινωνία</h2>
+    <h2 class="en" style="display:none;">Contact</h2>
+    <p class="el">Μη διστάσετε να επικοινωνήσετε μαζί μας για περισσότερες πληροφορίες:</p>
+    <p class="en" style="display:none;">Feel free to contact us for more information:</p>
+    <ul>
+      <li>Email: info@dalatsiproperties.com</li>
+      <li>Τηλέφωνο / Phone: +30 210 0000000</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Dalatsi IKE | dalatsiproperties.com</p>
+  </footer>
+</body>
+</html>
