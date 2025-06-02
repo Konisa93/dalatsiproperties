@@ -5,6 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dalatsi Properties | Χαλάνδρι</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  .language-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .dropdown-content {
+    position: absolute;
+    background-color: #111;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-top: 8px;
+    right: 0;
+    z-index: 10;
+    min-width: 120px;
+    display: none;
+  }
+
+  .dropdown-content button {
+    background: none;
+    border: none;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .dropdown-content button:hover {
+    background-color: #333;
+  }
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -84,7 +116,13 @@
 </head>
 <body>
   <header>
-    <button id="langToggleBtn" onclick="toggleLanguage()">English</button>
+    <div class="language-switcher">
+      <button id="langToggleBtn" onclick="toggleDropdown()">Γλώσσα</button>
+      <div id="langDropdown" class="dropdown-content" style="display: none;">
+        <button onclick="setLanguage('el')">Ελληνικά</button>
+        <button onclick="setLanguage('en')">English</button>
+      </div>
+    </div>
     <h1 style="font-family: 'Poppins', sans-serif; text-transform: uppercase;">DALATSI PROPERTIES</h1>
     <p class="el">Επαγγελματικοί χώροι στο Χαλάνδρι</p>
     <p class="en" style="display:none;">Commercial spaces in Chalandri</p>
@@ -150,19 +188,35 @@
 
   <script>
     let currentLang = 'el';
-    function toggleLanguage() {
-      const elElements = document.querySelectorAll('.el');
-      const enElements = document.querySelectorAll('.en');
-      if (currentLang === 'el') {
-        currentLang = 'en';
-        elElements.forEach(el => el.style.display = 'none');
-        enElements.forEach(el => el.style.display = '');
-        document.getElementById('langToggleBtn').textContent = 'English';
-      } else {
-        currentLang = 'el';
-        elElements.forEach(el => el.style.display = '');
-        enElements.forEach(el => el.style.display = 'none');
-        document.getElementById('langToggleBtn').textContent = 'Ελληνικά';
+
+function setLanguage(lang) {
+  currentLang = lang;
+  const elElements = document.querySelectorAll('.el');
+  const enElements = document.querySelectorAll('.en');
+
+  if (lang === 'el') {
+    elElements.forEach(el => el.style.display = '');
+    enElements.forEach(el => el.style.display = 'none');
+    document.getElementById('langToggleBtn').textContent = 'Γλώσσα';
+  } else {
+    elElements.forEach(el => el.style.display = 'none');
+    enElements.forEach(el => el.style.display = '');
+    document.getElementById('langToggleBtn').textContent = 'Language';
+  }
+
+  document.getElementById('langDropdown').style.display = 'none';
+}
+
+function toggleDropdown() {
+  const dropdown = document.getElementById('langDropdown');
+  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+
+window.onload = () => {
+  const browserLang = navigator.language.startsWith('en') ? 'en' : 'el';
+  setLanguage(browserLang);
+};
+
       }
     }
   </script>
