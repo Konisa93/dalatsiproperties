@@ -5,38 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dalatsi Properties | Χαλάνδρι</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
-  .language-switcher {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-
-  .dropdown-content {
-    position: absolute;
-    background-color: #111;
-    border: 1px solid white;
-    border-radius: 10px;
-    margin-top: 8px;
-    right: 0;
-    z-index: 10;
-    min-width: 120px;
-    display: none;
-  }
-
-  .dropdown-content button {
-    background: none;
-    border: none;
-    color: white;
-    text-align: left;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-  }
-
-  .dropdown-content button:hover {
-    background-color: #333;
-  }
-
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -98,10 +66,39 @@
       text-align: center;
       font-size: 0.9em;
     }
-    #langToggleBtn {
+    .language-switcher {
       position: absolute;
       top: 20px;
       right: 20px;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      background-color: #111;
+      border: 1px solid white;
+      border-radius: 10px;
+      margin-top: 8px;
+      right: 0;
+      z-index: 10;
+      min-width: 120px;
+      display: none;
+    }
+
+    .dropdown-content button {
+      background: none;
+      border: none;
+      color: white;
+      text-align: left;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .dropdown-content button:hover {
+      background-color: #333;
+    }
+
+    #langToggleBtn {
       padding: 8px 16px;
       background-color: #111;
       color: white;
@@ -109,6 +106,7 @@
       border-radius: 20px;
       cursor: pointer;
     }
+
     #langToggleBtn:hover {
       background-color: #333;
     }
@@ -118,7 +116,7 @@
   <header>
     <div class="language-switcher">
       <button id="langToggleBtn" onclick="toggleDropdown()">Γλώσσα</button>
-      <div id="langDropdown" class="dropdown-content" style="display: none;">
+      <div id="langDropdown" class="dropdown-content">
         <button onclick="setLanguage('el')">Ελληνικά</button>
         <button onclick="setLanguage('en')">English</button>
       </div>
@@ -189,36 +187,33 @@
   <script>
     let currentLang = 'el';
 
-function setLanguage(lang) {
-  currentLang = lang;
-  const elElements = document.querySelectorAll('.el');
-  const enElements = document.querySelectorAll('.en');
+    function setLanguage(lang) {
+      currentLang = lang;
+      const elElements = document.querySelectorAll('.el');
+      const enElements = document.querySelectorAll('.en');
 
-  if (lang === 'el') {
-    elElements.forEach(el => el.style.display = '');
-    enElements.forEach(el => el.style.display = 'none');
-    document.getElementById('langToggleBtn').textContent = 'Γλώσσα';
-  } else {
-    elElements.forEach(el => el.style.display = 'none');
-    enElements.forEach(el => el.style.display = '');
-    document.getElementById('langToggleBtn').textContent = 'Language';
-  }
-
-  document.getElementById('langDropdown').style.display = 'none';
-}
-
-function toggleDropdown() {
-  const dropdown = document.getElementById('langDropdown');
-  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-}
-
-window.onload = () => {
-  const browserLang = navigator.language.startsWith('en') ? 'en' : 'el';
-  setLanguage(browserLang);
-};
-
+      if (lang === 'el') {
+        elElements.forEach(el => el.style.display = '');
+        enElements.forEach(el => el.style.display = 'none');
+        document.getElementById('langToggleBtn').textContent = 'Γλώσσα';
+      } else {
+        elElements.forEach(el => el.style.display = 'none');
+        enElements.forEach(el => el.style.display = '');
+        document.getElementById('langToggleBtn').textContent = 'Language';
       }
+
+      document.getElementById('langDropdown').style.display = 'none';
     }
+
+    function toggleDropdown() {
+      const dropdown = document.getElementById('langDropdown');
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    window.onload = () => {
+      const browserLang = navigator.language.startsWith('en') ? 'en' : 'el';
+      setLanguage(browserLang);
+    };
   </script>
 </body>
 </html>
